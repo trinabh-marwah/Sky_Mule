@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7f5"><title>Sky Mule · Field data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark">S</span><span>sky<span class="brand-light">mule</span><small>FIELD SYSTEMS</small></span></a>
+      <div class="workspace"><span class="workspace-dot"></span><span><b>Demo mission</b><small>North farm · Field test</small></span><span class="chevron">⌄</span></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav><a class="nav-item active" href="#overview"><span>◫</span> Overview</a><a class="nav-item" href="#nodes"><span>⌁</span> Sensor nodes <i>5</i></a><a class="nav-item" href="#schedule"><span>◷</span> Flight schedule</a><a class="nav-item" href="#data"><span>▤</span> Collected data</a></nav>
+      <div class="sidebar-bottom"><div class="connection-card"><span class="signal-icon">⌁</span><div><b>Demo mode</b><small>Simulated sensor feed</small></div><span class="pulse"></span></div><div class="profile"><div class="avatar">TM</div><div><b>Trinabh Marwah</b><small>Project lead</small></div><span class="more">···</span></div></div>
+    </aside>
+    <main class="main-content" id="overview">
+      <header class="topbar"><div class="breadcrumbs">Projects <span>/</span> <b>Sky Mule</b></div><div class="top-actions"><span class="live-pill"><i></i> DEMO DATA</span><button class="icon-button" aria-label="Notifications">♧<em></em></button><div class="top-avatar">TM</div></div></header>
+      <div class="content-wrap">
+        <section class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MISSION CONTROL</div><h1>Field overview<span class="period">.</span></h1><p class="subheading">Your sensor network at a glance. Plan a collection run within the available flight budget.</p></div><button id="refreshButton" class="button button-quiet"><span class="refresh-icon">↻</span> Refresh data</button></section>
+        <section class="mission-banner">
+          <div class="mission-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="drone-icon">✣</div><span class="art-dot dot-a"></span><span class="art-dot dot-b"></span><span class="art-dot dot-c"></span></div>
+          <div class="mission-copy"><div class="banner-kicker"><span class="status-bullet"></span> READY FOR COLLECTION</div><h2>Make every minute<br>in the air count.</h2><p>Schedule which nodes to visit and maximize the data recovered on this sortie.</p><a href="#schedule" class="text-link">Plan collection run <span>↗</span></a></div>
+          <div class="mission-stats"><div><span>ACTIVE NODES</span><b>4<span class="stat-muted"> / 5</span></b><small>Within communication range</small></div><div><span>DATA WAITING</span><b id="waitingMetric">671 <small>kB</small></b><small>Across reachable nodes</small></div><div><span>LAST COLLECTION</span><b class="last-collection">—</b><small>Ready for first sortie</small></div></div>
+        </section>
+        <section class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span>TEMPERATURE</span><span class="metric-icon temp">♨</span></div><div class="metric-value" id="tempMetric">25.9<span>°C</span></div><div class="metric-foot"><span class="trend up">↗ 0.8°</span> avg. across network</div><div class="sparkline spark-temp"><svg viewBox="0 0 150 42" preserveAspectRatio="none"><path d="M0 33 C13 30 13 25 26 28 S40 20 51 23 S67 30 77 20 S94 21 104 15 S122 21 131 10 S143 13 150 5"/></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span>HUMIDITY</span><span class="metric-icon humidity">◌</span></div><div class="metric-value" id="humidityMetric">58<span>%</span></div><div class="metric-foot"><span class="trend down">↘ 2.1%</span> avg. across network</div><div class="sparkline spark-hum"><svg viewBox="0 0 150 42" preserveAspectRatio="none"><path d="M0 8 C12 14 16 7 26 15 S40 21 51 16 S65 27 77 20 S95 26 104 19 S121 24 131 29 S142 25 150 35"/></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span>SOIL MOISTURE</span><span class="metric-icon soil">◒</span></div><div class="metric-value" id="soilMetric">41<span>%</span></div><div class="metric-foot"><span class="trend neutral">Within range</span> average reading</div><div class="sparkline spark-soil"><svg viewBox="0 0 150 42" preserveAspectRatio="none"><path d="M0 25 C11 27 15 18 26 23 S39 32 51 25 S66 16 77 22 S93 32 104 24 S122 14 131 18 S144 25 150 15"/></svg></div></article>
+          <article class="metric-card backlog-card"><div class="metric-top"><span>STORED DATA</span><span class="metric-icon storage">▤</span></div><div class="metric-value" id="storedMetric">671<span> kB</span></div><div class="metric-foot"><span class="trend neutral">4 nodes</span> have data to retrieve</div><div class="backlog-bar"><i></i></div></article>
+        </section>
+        <section class="section-grid" id="nodes">
+          <article class="panel node-panel"><div class="panel-heading"><div><div class="section-eyebrow">NETWORK</div><h3>Sensor nodes <span class="count-badge">5</span></h3></div><a href="#nodes" class="small-link">View network <span>→</span></a></div>
+            <div class="table-wrap"><table><thead><tr><th>NODE</th><th>STATUS</th><th>LAST READING</th><th>BACKLOG</th><th>LINK</th><th></th></tr></thead><tbody id="nodeTable"></tbody></table></div>
+            <div class="panel-footer"><span><i class="legend-dot online"></i> 3 online <i class="legend-dot alert"></i> 1 attention <i class="legend-dot offline"></i> 1 offline</span><span>Updated just now</span></div>
+          </article>
+          <article class="panel activity-panel" id="data"><div class="panel-heading"><div><div class="section-eyebrow">LIVE FEED</div><h3>Environmental data</h3></div><select id="chartNode" aria-label="Select node"><option value="all">All nodes</option></select></div>
+            <div class="chart-legend"><span><i class="legend-line temp-line"></i> Temperature</span><span><i class="legend-line soil-line"></i> Soil moisture</span><span class="chart-unit">LAST 12 HOURS</span></div>
+            <div class="chart-area"><div class="y-labels"><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span></div><div class="chart-plot"><div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div><svg id="dataChart" viewBox="0 0 500 170" preserveAspectRatio="none" role="img" aria-label="Environmental readings over time"></svg><div class="x-labels"><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span><span>Now</span></div></div></div>
+            <div class="chart-note"><span class="chart-note-icon">i</span> Values shown are the latest available readings from the selected nodes.</div>
+          </article>
+        </section>
+        <section class="panel scheduler-panel" id="schedule"><div class="panel-heading schedule-heading"><div><div class="section-eyebrow">MISSION PLANNER</div><h3>Collection schedule</h3><p>Allocate service time based on stored data, node priority and your return budget.</p></div><button id="replanButton" class="button button-dark"><span>✧</span> Recalculate</button></div>
+          <div class="planner-controls"><label>REMAINING FLIGHT TIME<div class="input-wrap"><input id="flightMinutes" type="number" min="1" max="90" value="12"><span>min</span></div></label><label>RETURN RESERVE<div class="input-wrap"><input id="reserveMinutes" type="number" min="0" max="90" value="4"><span>min</span></div></label><label>BATTERY REMAINING<div class="battery-control"><div class="battery-shell"><div id="batteryFill"></div></div><input id="batteryPercent" type="range" min="0" max="100" value="68"><b id="batteryLabel">68%</b></div></label><button id="simulateButton" class="button button-primary"><span>▶</span> Simulate collection</button></div>
+          <div class="schedule-summary"><div><span class="summary-icon">◷</span><span><b id="scheduleTitle">Building schedule…</b><small id="scheduleSub">Prioritized by data age, node priority and link quality</small></span></div><div class="summary-kpis"><span><b id="plannedTime">—</b><small>PLANNED AIRTIME</small></span><span><b id="plannedData">—</b><small>DATA TO COLLECT</small></span><span><b id="visitCount">—</b><small>NODE VISITS</small></span></div></div>
+          <div class="schedule-table-wrap"><table class="schedule-table"><thead><tr><th>ORDER / NODE</th><th>WHY THIS NODE</th><th>DATA WINDOW</th><th>EST. TRANSFER</th><th>COLLECTION</th></tr></thead><tbody id="scheduleRows"></tbody></table></div>
+          <div class="reserve-note"><span>↩</span><div><b>Return reserve protected</b><small id="reserveNote">Schedule keeps the configured return-time reserve available.</small></div><span class="reserve-time" id="reserveReadout">4 min reserved</span></div>
+        </section>
+        <footer class="page-footer"><span>SKY MULE <i>·</i> FIELD DATA SYSTEM</span><span><i class="footer-dot"></i> All systems ready <span class="footer-divider">·</span> <span id="updatedAt">Updated just now</span></span></footer>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
